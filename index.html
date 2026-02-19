@@ -17,7 +17,7 @@
    extend:{
     fontFamily:{
      sans:['Outfit','sans-serif'],
-     display:['Space+Grotesk','sans-serif'],
+     display:['Space Grotesk','sans-serif'],
     }
    }
   }
@@ -25,7 +25,6 @@
 </script>
 
 <style>
-/* Tło: mocno czarne + duży pomarańczowy gradient w prawym dolnym rogu */
 body{
   background-color: #030305;
   background-image: radial-gradient(circle at bottom right, rgba(255,107,0,0.6) 0%, rgba(255,107,0,0.2) 40%, transparent 80%);
@@ -35,14 +34,12 @@ body{
   overflow-x:hidden;
 }
 
-/* Szklany efekt */
 .glass{
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(20px);
   border:1px solid rgba(255,255,255,0.08);
 }
 
-/* Gradient tekstu pomarańczowo-żółty */
 .gradient{
   background: linear-gradient(90deg, #ffd600, #ff6b00);
   font-weight: 900;
@@ -50,10 +47,6 @@ body{
   -webkit-text-fill-color: transparent;
 }
 
-/* Portfolio miniaturki */
-#portfolio .grid {
-  grid-auto-rows: min-content;
-}
 #portfolio .grid div img {
   width: 100%;
   height: auto;
@@ -65,7 +58,6 @@ body{
   box-shadow: 0 20px 40px rgba(255,107,0,0.3), 0 10px 20px rgba(255,214,0,0.2);
 }
 
-/* Pasek nawigacji – full width, kwadratowy */
 nav {
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(15px);
@@ -92,12 +84,9 @@ nav a::after {
   background: #ff6b00;
   transition: width 0.3s;
 }
-nav a:hover::after {
-  width: 100%;
-}
-nav a:hover {
-  color: #ffd600;
-}
+nav a:hover::after { width: 100%; }
+nav a:hover { color: #ffd600; }
+
 nav .logo {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 900;
@@ -116,60 +105,43 @@ nav .nav-container {
   height: 60px;
 }
 
-/* Custom scroll bar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #ffd600, #ff6b00);
   border-radius: 5px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #ff6b00, #ffd600);
+
+/* 🔥 NOWE SZKLANE PRZYCISKI */
+.glass-btn{
+  padding:16px 30px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);
+  color:white;
+  cursor:pointer;
+  font-size:16px;
+  transition:0.3s;
+}
+.glass-btn:hover{
+  transform:translateY(-4px);
+  border:1px solid rgba(255,180,0,0.8);
+  box-shadow:0 0 25px rgba(255,160,0,0.5);
 }
 
-/* Kontakt */
-#contact {
-  padding: 6rem 1.5rem;
-  background: rgba(0,0,0,0.6);
-  border-top: 1px solid rgba(255,255,255,0.1);
-  text-align: center;
+#contact{
+  padding:6rem 1.5rem;
+  text-align:center;
 }
-#contact h2 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: white;
+
+.copy-feedback{
+  margin-top:1rem;
+  color:#ffd600;
+  opacity:0;
+  transition:0.3s;
 }
-#contact p {
-  color: #aaa;
-  margin-bottom: 2rem;
-}
-#contact button {
-  background: #ff6b00;
-  color: black;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-#contact button:hover {
-  background: #ffd600;
-}
-#contact .copy-feedback {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #ff6b00;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-#contact .copy-feedback.show {
-  opacity: 1;
-}
+.copy-feedback.show{ opacity:1; }
 </style>
 </head>
 <body class="font-sans">
@@ -190,14 +162,14 @@ nav .nav-container {
 <!-- WSTEP -->
 <section id="wstep" class="min-h-screen flex items-center justify-center text-center px-6 pt-24">
  <div class="max-w-4xl">
-  <h1 class="font-display text-5xl md:text-7xl font-bold mb-8" data-aos="fade-up">
+  <h1 class="font-display text-5xl md:text-7xl font-bold mb-8">
    Projektuję <br>
    <span class="gradient">miniaturki Minecraft</span>
   </h1>
-  <p class="text-gray-100 text-lg mb-10" data-aos="fade-up" data-aos-delay="200">
+  <p class="text-gray-100 text-lg mb-10">
    Tworzę przyciągające uwagę, dynamiczne miniaturki, które sprawiają, że Twoje wideo wyróżnia się wśród konkurencji.
   </p>
-  <a href="#portfolio" class="px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition" data-aos="fade-up" data-aos-delay="400">
+  <a href="#portfolio" class="px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition">
    Zobacz portfolio
   </a>
  </div>
@@ -206,8 +178,8 @@ nav .nav-container {
 <!-- O MNIE -->
 <section id="about" class="py-28 px-6">
  <div class="max-w-5xl mx-auto text-center">
-  <h2 class="font-display text-4xl md:text-5xl font-bold mb-10" data-aos="fade-up">O mnie</h2>
-  <p class="text-gray-100 text-lg max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+  <h2 class="font-display text-4xl md:text-5xl font-bold mb-10">O mnie</h2>
+  <p class="text-gray-100 text-lg max-w-2xl mx-auto">
    Tworzę estetyczne i kreatywne miniaturki, które przyciągają widzów i zwiększają zasięg Twojego kanału.
   </p>
  </div>
@@ -216,29 +188,37 @@ nav .nav-container {
 <!-- PORTFOLIO -->
 <section id="portfolio" class="py-28 px-6">
  <div class="max-w-6xl mx-auto">
-  <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-16 gradient" data-aos="fade-up">
-    Portfolio
-  </h2>
+  <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-16 gradient">Portfolio</h2>
   <div class="grid md:grid-cols-3 gap-8">
-   <div class="glass rounded-2xl overflow-hidden" data-aos="fade-up">
-    <img src="https://i.imgur.com/fg0K3Bn.jpeg" alt="Miniaturka 1" class="w-full h-auto">
+   <div class="glass rounded-2xl overflow-hidden">
+    <img src="https://i.imgur.com/fg0K3Bn.jpeg">
    </div>
-   <div class="glass rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-    <img src="https://i.imgur.com/TVF9qNI.jpeg" alt="Miniaturka 2" class="w-full h-auto">
+   <div class="glass rounded-2xl overflow-hidden">
+    <img src="https://i.imgur.com/TVF9qNI.jpeg">
    </div>
-   <div class="glass rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-    <img src="https://i.imgur.com/paBs6hf.jpeg" alt="Miniaturka 3" class="w-full h-auto">
+   <div class="glass rounded-2xl overflow-hidden">
+    <img src="https://i.imgur.com/paBs6hf.jpeg">
    </div>
   </div>
  </div>
 </section>
 
-<!-- KONTAKT -->
-<section id="contact" data-aos="fade-up">
-  <h2>Kontakt</h2>
-  <p>Kliknij przycisk aby skopiować mój nick Discord do schowka:</p>
-  <button id="copyBtn">xtroppik</button>
-  <div class="copy-feedback" id="copyFeedback">Skopiowano!</div>
+<!-- 🔥 KONTAKT -->
+<section id="contact">
+  <h2 class="font-display text-4xl mb-6">Kontakt</h2>
+  <p class="text-gray-400 mb-10">Kliknij aby skopiować:</p>
+
+  <div class="flex justify-center gap-6 flex-wrap">
+    <button class="glass-btn" onclick="copyText('xtroppik')">
+      Kopiuj: xtroppik
+    </button>
+
+    <button class="glass-btn" onclick="copyText('xtroppik@gmail.com')">
+      Kopiuj: xtroppik@gmail.com
+    </button>
+  </div>
+
+  <div class="copy-feedback" id="feedback">Skopiowano!</div>
 </section>
 
 <footer class="text-center py-16 text-gray-500">
@@ -249,22 +229,12 @@ nav .nav-container {
 <script>
 AOS.init();
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
- anchor.addEventListener('click',function(e){
-  e.preventDefault();
-  document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
- })
-});
-
-// Kopiowanie nicku
-const copyBtn = document.getElementById('copyBtn');
-const copyFeedback = document.getElementById('copyFeedback');
-copyBtn.addEventListener('click', ()=>{
-  navigator.clipboard.writeText(copyBtn.textContent).then(()=>{
-    copyFeedback.classList.add('show');
-    setTimeout(()=> copyFeedback.classList.remove('show'), 1500);
-  });
-});
+function copyText(text){
+ navigator.clipboard.writeText(text);
+ const fb=document.getElementById("feedback");
+ fb.classList.add("show");
+ setTimeout(()=>fb.classList.remove("show"),1500);
+}
 </script>
 
 </body>
