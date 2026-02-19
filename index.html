@@ -17,7 +17,7 @@
    extend:{
     fontFamily:{
      sans:['Outfit','sans-serif'],
-     display:['Space Grotesk','sans-serif'],
+     display:['Space+Grotesk','sans-serif'],
     }
    }
   }
@@ -25,60 +25,178 @@
 </script>
 
 <style>
- body{
-  background: linear-gradient(135deg, #0d0d0f, #1f0f2e, #2c0f3a);
+/* Tło: mocno czarne + duży pomarańczowy gradient w prawym dolnym rogu */
+body{
+  background-color: #030305;
+  background-image: radial-gradient(circle at bottom right, rgba(255,107,0,0.6) 0%, rgba(255,107,0,0.2) 40%, transparent 80%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   color: white;
   overflow-x:hidden;
- }
+}
 
- .glass{
-  background:rgba(255,255,255,0.03);
-  backdrop-filter:blur(18px);
-  border:1px solid rgba(255,255,255,0.06);
- }
+/* Szklany efekt */
+.glass{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);
+}
 
- .gradient{
-  background:linear-gradient(90deg,#8b5cf6,#ec4899);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
- }
+/* Gradient tekstu pomarańczowo-żółty */
+.gradient{
+  background: linear-gradient(90deg, #ffd600, #ff6b00);
+  font-weight: 900;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
- /* Usuń nadmiarowe miejsce pod portfolio */
- #portfolio .grid {
-  grid-auto-rows: min-content; /* wysokość automatycznie dopasowana do zawartości */
- }
+/* Portfolio miniaturki */
+#portfolio .grid {
+  grid-auto-rows: min-content;
+}
+#portfolio .grid div img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#portfolio .grid div:hover img {
+  transform: scale(1.1);
+  box-shadow: 0 20px 40px rgba(255,107,0,0.3), 0 10px 20px rgba(255,214,0,0.2);
+}
+
+/* Pasek nawigacji – full width, kwadratowy */
+nav {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  z-index: 50;
+}
+nav a {
+  position: relative;
+  transition: color 0.3s;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background: #ff6b00;
+  transition: width 0.3s;
+}
+nav a:hover::after {
+  width: 100%;
+}
+nav a:hover {
+  color: #ffd600;
+}
+nav .logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  background: linear-gradient(90deg, #ffd600, #ff6b00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+nav .nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+/* Custom scroll bar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffd600, #ff6b00);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff6b00, #ffd600);
+}
+
+/* Kontakt */
+#contact {
+  padding: 6rem 1.5rem;
+  background: rgba(0,0,0,0.6);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+#contact h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+#contact p {
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+#contact button {
+  background: #ff6b00;
+  color: black;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+#contact button:hover {
+  background: #ffd600;
+}
+#contact .copy-feedback {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #ff6b00;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+#contact .copy-feedback.show {
+  opacity: 1;
+}
 </style>
 </head>
-
 <body class="font-sans">
 
 <!-- NAV -->
-<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl z-50">
- <div class="glass rounded-full px-6 py-3 flex justify-between items-center">
-  <div class="font-display font-bold text-xl">xtroppik</div>
-
-  <div class="hidden md:flex gap-8 text-sm">
-   <a href="#wstep" class="hover:text-purple-400">Wstęp</a>
-   <a href="#about" class="hover:text-purple-400">O mnie</a>
-   <a href="#contact" class="hover:text-purple-400">Kontakt</a>
-   <a href="#portfolio" class="hover:text-purple-400">Portfolio</a>
+<nav>
+  <div class="nav-container">
+    <div class="logo">xtroppik</div>
+    <div class="hidden md:flex gap-8 text-sm">
+      <a href="#wstep">Wstęp</a>
+      <a href="#about">O mnie</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Kontakt</a>
+    </div>
   </div>
- </div>
 </nav>
 
 <!-- WSTEP -->
-<section id="wstep" class="min-h-screen flex items-center justify-center text-center px-6">
+<section id="wstep" class="min-h-screen flex items-center justify-center text-center px-6 pt-24">
  <div class="max-w-4xl">
-
   <h1 class="font-display text-5xl md:text-7xl font-bold mb-8" data-aos="fade-up">
    Projektuję <br>
    <span class="gradient">miniaturki Minecraft</span>
   </h1>
-
-  <p class="text-gray-400 text-lg mb-10" data-aos="fade-up" data-aos-delay="200">
-   Nowoczesne, czarne i profesjonalne miniaturki które zwiększają CTR i przyciągają uwagę.
+  <p class="text-gray-100 text-lg mb-10" data-aos="fade-up" data-aos-delay="200">
+   Tworzę przyciągające uwagę, dynamiczne miniaturki, które sprawiają, że Twoje wideo wyróżnia się wśród konkurencji.
   </p>
-
   <a href="#portfolio" class="px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition" data-aos="fade-up" data-aos-delay="400">
    Zobacz portfolio
   </a>
@@ -88,70 +206,39 @@
 <!-- O MNIE -->
 <section id="about" class="py-28 px-6">
  <div class="max-w-5xl mx-auto text-center">
-
   <h2 class="font-display text-4xl md:text-5xl font-bold mb-10" data-aos="fade-up">O mnie</h2>
-
-  <p class="text-gray-400 text-lg max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-   Jestem grafikiem specjalizującym się w miniaturkach Minecraft. Pomagam twórcom zwiększać wyświetlenia i wyróżniać się profesjonalnym designem.
+  <p class="text-gray-100 text-lg max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+   Tworzę estetyczne i kreatywne miniaturki, które przyciągają widzów i zwiększają zasięg Twojego kanału.
   </p>
  </div>
 </section>
 
-<!-- KONTAKT -->
-<section id="contact" class="py-28 px-6">
- <div class="max-w-3xl mx-auto">
-
-  <div class="glass rounded-3xl p-10 text-center" data-aos="zoom-in">
-
-   <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-black flex items-center justify-center border border-white/10">
-    <i class="fa-brands fa-discord text-4xl"></i>
+<!-- PORTFOLIO -->
+<section id="portfolio" class="py-28 px-6">
+ <div class="max-w-6xl mx-auto">
+  <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-16 gradient" data-aos="fade-up">
+    Portfolio
+  </h2>
+  <div class="grid md:grid-cols-3 gap-8">
+   <div class="glass rounded-2xl overflow-hidden" data-aos="fade-up">
+    <img src="https://i.imgur.com/fg0K3Bn.jpeg" alt="Miniaturka 1" class="w-full h-auto">
    </div>
-
-   <h2 class="font-display text-3xl font-bold mb-3">Kontakt</h2>
-   <p class="text-gray-400 mb-8">Chcesz współpracować? Napisz do mnie na Discord.</p>
-
-   <div class="flex flex-col md:flex-row gap-4 justify-center">
-
-    <div class="bg-white/5 border border-white/10 px-6 py-4 rounded-xl flex items-center gap-4 hover:border-purple-400 transition">
-     <i class="fa-regular fa-id-card"></i>
-     <span class="font-mono">xtroppik</span>
-    </div>
-
-    <a href="#" class="px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:bg-purple-600 transition">
-     Dołącz na serwer
-    </a>
-
+   <div class="glass rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+    <img src="https://i.imgur.com/TVF9qNI.jpeg" alt="Miniaturka 2" class="w-full h-auto">
    </div>
-
+   <div class="glass rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+    <img src="https://i.imgur.com/paBs6hf.jpeg" alt="Miniaturka 3" class="w-full h-auto">
+   </div>
   </div>
  </div>
 </section>
 
-<!-- PORTFOLIO - tylko 3 miniaturki, bez dodatkowej przestrzeni -->
-<section id="portfolio" class="py-28 px-6">
- <div class="max-w-6xl mx-auto">
-
-  <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-16" data-aos="fade-up">Portfolio</h2>
-
-  <div class="grid md:grid-cols-3 gap-8">
-
-   <!-- Miniaturka 1 -->
-   <div class="glass rounded-2xl overflow-hidden hover:scale-105 transition-transform" data-aos="fade-up">
-    <img src="https://i.imgur.com/fg0K3Bn.jpeg" alt="Miniaturka 1" class="w-full h-auto">
-   </div>
-
-   <!-- Miniaturka 2 -->
-   <div class="glass rounded-2xl overflow-hidden hover:scale-105 transition-transform" data-aos="fade-up" data-aos-delay="100">
-    <img src="https://i.imgur.com/TVF9qNI.jpeg" alt="Miniaturka 2" class="w-full h-auto">
-   </div>
-
-   <!-- Miniaturka 3 -->
-   <div class="glass rounded-2xl overflow-hidden hover:scale-105 transition-transform" data-aos="fade-up" data-aos-delay="200">
-    <img src="https://i.imgur.com/paBs6hf.jpeg" alt="Miniaturka 3" class="w-full h-auto">
-   </div>
-
-  </div>
- </div>
+<!-- KONTAKT -->
+<section id="contact" data-aos="fade-up">
+  <h2>Kontakt</h2>
+  <p>Kliknij przycisk aby skopiować mój nick Discord do schowka:</p>
+  <button id="copyBtn">xtroppik</button>
+  <div class="copy-feedback" id="copyFeedback">Skopiowano!</div>
 </section>
 
 <footer class="text-center py-16 text-gray-500">
@@ -167,6 +254,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
   e.preventDefault();
   document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
  })
+});
+
+// Kopiowanie nicku
+const copyBtn = document.getElementById('copyBtn');
+const copyFeedback = document.getElementById('copyFeedback');
+copyBtn.addEventListener('click', ()=>{
+  navigator.clipboard.writeText(copyBtn.textContent).then(()=>{
+    copyFeedback.classList.add('show');
+    setTimeout(()=> copyFeedback.classList.remove('show'), 1500);
+  });
 });
 </script>
 
