@@ -1,0 +1,19 @@
+<style>
+ body{
+  background: linear-gradient(135deg, #0d0d0f, #1f0f2e, #2c0f3a);
+  color: white;
+  overflow-x:hidden;
+ }
+
+ .glass{
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.06);
+ }
+
+ .gradient{
+  background:linear-gradient(90deg,#8b5cf6,#ec4899);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+ }
+</style>
