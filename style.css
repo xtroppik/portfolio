@@ -1,19 +1,25 @@
-<style>
- body{
-  background: linear-gradient(135deg, #0d0d0f, #1f0f2e, #2c0f3a);
-  color: white;
-  overflow-x:hidden;
- }
+body::before {
+  content: '';
+  position: absolute;
+  width: 1200px;            /* rozmiar gradientu */
+  height: 1200px;
+  top: -400px;               /* przesunięcie, żeby gradient lekko wychodził poza ekran */
+  left: -400px;
+  background: radial-gradient(circle at top left, rgba(255,214,0,0.25), rgba(255,107,0,0.05) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;                /* pod treścią */
+  filter: blur(150px);       /* miękkie rozmycie */
+}
 
- .glass{
-  background:rgba(255,255,255,0.03);
-  backdrop-filter:blur(18px);
-  border:1px solid rgba(255,255,255,0.06);
- }
-
- .gradient{
-  background:linear-gradient(90deg,#8b5cf6,#ec4899);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
- }
-</style>
+body::after {
+  content: '';
+  position: absolute;
+  width: 1200px;          
+  height: 1200px;
+  bottom: -400px;         
+  right: -400px;
+  background: radial-gradient(circle at bottom right, rgba(255,107,0,0.25), rgba(255,214,0,0.05) 60%, transparent 100%);
+  pointer-events: none;    
+  z-index: 0;              
+  filter: blur(150px);     
+}
