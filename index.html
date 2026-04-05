@@ -44,6 +44,22 @@ body{
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   font-weight:900;
+  position: relative;
+  display: inline-block;
+}
+
+/* plamka */
+.gradient::after {
+  content: '';
+  position: absolute;
+  width:20px;
+  height:20px;
+  background: #ff6b00;
+  border-radius:50%;
+  top: 10%;
+  left: 60%;
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 #portfolio .grid div img{
@@ -73,7 +89,7 @@ nav a{
   transition: color 0.3s;
 }
 nav a::after{
-  content:'';
+  content:''; 
   position:absolute;
   width:0;
   height:2px;
